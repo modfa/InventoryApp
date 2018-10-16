@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Book Inventory</string>
+    <string name="product_name">Product Name</string>
+    <string name="price">Price</string>
+    <string name="supplier_name">Supplier Name</string>
+    <string name="quantity">Quantity</string>
+    <string name="supplier_ph_no">Supplier Ph. No.</string>
+    <string name="save">save</string>
+</resources>
