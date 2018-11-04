@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +21,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.ahad.bookinventory.data.BookDbHelper;
 import com.example.ahad.bookinventory.data.InventoryContract.BookEntry;
 
 public class CatalogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -32,10 +32,6 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
      * Adapter for the ListView
      */
     BookCursorAdapter mCursorAdapter;
-    /**
-     * Database helper that will provide us access to the database
-     */
-    private BookDbHelper mBookDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,10 +80,6 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
             }
         });
 
-        // To access our database, we instantiate our subclass of SQLiteOpenHelper
-        // and pass the context, which is the current activity.
-        mBookDbHelper = new BookDbHelper(this);
-
         // Kick off the loader
         getLoaderManager().initLoader(BOOK_LOADER, null, this);
     }
@@ -110,6 +102,8 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         // into the pets database table.
         // Receive the new content URI that will allow us to access Toto's data in the future.
         Uri newUri = getContentResolver().insert(BookEntry.CONTENT_URI, values);
+
+        Log.v("CatalogActivity","Number of rows were inserted during dummy data : " + newUri);
     }
 
     @Override

@@ -132,7 +132,14 @@ public class BookEditor extends AppCompatActivity implements LoaderManager.Loade
         mMinusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int quantity = Integer.parseInt(mProductQuantityEditText.getText().toString().trim());
+               String quantityText = mProductQuantityEditText.getText().toString().trim();
+               if(quantityText.isEmpty()){
+                   Toast.makeText(getApplicationContext(), "Please provide a valid quantity to reduce it",
+                           Toast.LENGTH_SHORT).show();
+                   return;
+               }
+                int quantity = Integer.parseInt(quantityText);
+
                 if (quantity == 0) {
                     Toast.makeText(getApplicationContext(), "Sorry !! Can't go below zero quantity",
                             Toast.LENGTH_SHORT).show();
@@ -146,7 +153,13 @@ public class BookEditor extends AppCompatActivity implements LoaderManager.Loade
         mPlusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int quantity = Integer.parseInt(mProductQuantityEditText.getText().toString().trim());
+               String quantityText = mProductQuantityEditText.getText().toString().trim();
+               if(quantityText.isEmpty()){
+                   Toast.makeText(getApplicationContext(), "Please provide a valid quantity to add on it",
+                           Toast.LENGTH_SHORT).show();
+                   return;
+               }
+                int quantity = Integer.parseInt(quantityText);
                 quantity++;
                 mProductQuantityEditText.setText(Integer.toString(quantity));
             }
