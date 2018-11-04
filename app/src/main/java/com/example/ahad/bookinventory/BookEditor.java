@@ -274,6 +274,7 @@ public class BookEditor extends AppCompatActivity implements LoaderManager.Loade
                         Toast.LENGTH_SHORT).show();
             }
         }
+        finish();
     }
 
     @Override
@@ -306,7 +307,6 @@ public class BookEditor extends AppCompatActivity implements LoaderManager.Loade
             // Respond to a click on the "Save" menu option
             case R.id.action_save:
                 insertProduct();
-                finish();
                 return true;
 
             case R.id.action_delete:
